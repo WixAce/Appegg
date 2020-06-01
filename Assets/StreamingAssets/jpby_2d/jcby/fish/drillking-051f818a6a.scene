@@ -1,0 +1,1 @@
+{"type":"View","props":{"mouseThrough":true},"compId":2,"child":[{"type":"SkeletonPlayer","props":{"y":78,"x":0,"var":"sk","url":"res-game/jcby/fish/drillshark.sk","scaleX":-1,"runtime":"laya.ani.bone.Skeleton"},"compId":3},{"type":"Sprite","props":{"y":-203,"x":-82,"width":164,"var":"tp","height":326},"compId":6}],"loadList":["res-game/jcby/fish/drillshark.sk"],"loadList3D":[]}
