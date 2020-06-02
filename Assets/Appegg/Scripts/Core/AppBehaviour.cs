@@ -12,8 +12,7 @@ using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class AppBehaviour :MonoBehaviour {
-	
+public class AppBehaviour : MonoBehaviour {
 	[SerializeField]
 	private string appId = "e7ce6de73c72f9fe7ac52c7d71c5bb9e", restApiKey = "b383af81af3ce84dcd5bf6a2765ff40f";
 
@@ -27,28 +26,38 @@ public class AppBehaviour :MonoBehaviour {
 	[SerializeField] private Button        privacyButton,  changelogCloseButton, reconnectButton;
 	[SerializeField] private UIProgressBar progressBar;
 
-	[SerializeField] private string webScene = "Web", builtInScene = "Main", hotfixScene = "Hotfix", hotfixFile = "Hotfix.dll";
-	
-	[SerializeField] private string bundle ="Game";
+	[SerializeField]
+	private string webScene = "Web", builtInScene = "Main", hotfixScene = "Hotfix", hotfixFile = "Hotfix.dll";
+
+	[SerializeField] private string bundlePrefab = "Game";
 
 	[SerializeField] private bool clearCache;
 
 	[SerializeField] private HybridType hybridType;
-	[SerializeField] private AppType  appType;
-	[SerializeField] private SavePath savePath;
+	[SerializeField] private AppType    appType;
+	[SerializeField] private SavePath   savePath;
 
 	private Data   _data;
-	private string _idfa,           _idfv;
-	private int    _currentVersion, _currentUrlIndex, _currentHybridVersion;
-	private bool   _isDataCollected,_isDownloaded;
-	private float _downloadSize;
-	private AsyncOperationHandle<SceneInstance> _loadOperation;
-	private AsyncOperationHandle                _loadDependencies;
-	public static string SavePath { get; private set; }
+	private string _idfa, _idfv;
+
+	private int _currentVersion,
+	            _currentUrlIndex,
+	            _currentHybridVersion,
+	            _currentNativeVersion;
+
+	private        bool                                _isDataCollected, _isDownloaded;
+	private        float                               _downloadSize;
+	private        AsyncOperationHandle<SceneInstance> _loadOperation;
+	private        AsyncOperationHandle                _loadDependencies;
+	private static string                              SavePath { get; set; }
+
+	public static string HybridPath     { get; private set; }
+	public static string NativePath     { get; private set; }
 	
-	public static string NativePath { get; set; }
+	public static string HybridFileName { get; private set; }
 	public static string HotfixFileName { get; private set; }
 
+	public static string HybridIndex { get; private set; }
 	protected virtual void OnEnable() => Connect();
 
 	void Start() {
@@ -79,7 +88,6 @@ public class AppBehaviour :MonoBehaviour {
 			                                              _data.url     = string.Format(_data.url, _idfa, _idfv);
 			                                              WKWebView.Url = _data.url;
 			                                              PlayOnlineGame();
-			                                              // WKWebView.Instance.Load(_data.url);
 		                                              }
 		                                             );
 	}
@@ -95,6 +103,7 @@ public class AppBehaviour :MonoBehaviour {
 # region Views
 
 	private void ShowChangelog() => changelogView.SetActive(true);
+	
 	private void HideChangelog() => changelogView.SetActive(false);
 
 	private void ShowLoadingView() {
@@ -124,9 +133,7 @@ public class AppBehaviour :MonoBehaviour {
 		}
 	}
 
-	private void PlayOfflineGame() {
-		SceneManager.LoadScene(builtInScene);
-	}
+	private void PlayOfflineGame() => SceneManager.LoadScene(builtInScene);
 
 	private void PlayOnlineGame() {
 		WKWebView.IsHybrid = false;
@@ -134,66 +141,43 @@ public class AppBehaviour :MonoBehaviour {
 		LoadWebView();
 	}
 
-	private void PlayHotfixGame() {
-		//loadingText.text = "正在检查更新";
-		//ShowLoadingView();
-		DownloadAssetsBundle(()=> {
-			Invoke(nameof(LoadHotfixScene),1f);
-			//Invoke(nameof(OnBundleDownloaded),1f);
-		});
-		//hotfixFile = "Hotfix.dll";
-	}
+	private void PlayHotfixGame() => DownloadAssetsBundle(LoadHotfixScene);
 
-	void OnBundleDownloaded() {
-		progressBar.SetProgress(0f,true);
-			if (_currentVersion != _data.version || _data.forceUpdate || !File.Exists(SavePath + "/"+hotfixFile)) {
-				//ShowLoadingView();
-				StartCoroutine(WebUtil.DownloadFile(_data.nativeUrl  + hotfixFile,
-				                                    (bytes) => {
-					                                    File.WriteAllBytes(SavePath+"/"+hotfixFile, bytes); 
-					                                    progressBar.SetProgress(1f,true); 
-					                                    loadingText.text = "资源加载完毕";
-					                                    Invoke(nameof(LoadHotfixScene),1f);
-				                                    },
-				                                    p => {
-					                                    progressBar.SetProgress(p); 
-					                                    loadingText.text = "正在加载资源";
-				                                    }, 2f));
-
-			}
-			else {
-				progressBar.SetProgress(1f,true); 
-				loadingText.text = "资源加载完毕";
-				Invoke(nameof(LoadHotfixScene),1f);
-				//PlayHybridGame();
-			}
-	}
-
-	void LoadHotfixScene() {
-		Addressables.LoadSceneAsync(hotfixScene);
-	}
+	void LoadHotfixScene() => Addressables.LoadSceneAsync(hotfixScene);
 
 	private void PlayHybridGame() {
 		var fileName = UriHelper.GetFileName(_data.hybridUrl, true);
+		HybridPath = "file://" + SavePath;
+		HybridFileName = fileName;
+		HybridIndex = _data.hybridIndex;
 		WKWebView.IsHybrid = true;
-		WKWebView.Uri      = "file://" + SavePath + "/" + fileName + "/" + _data.hybridIndex;
+		//WKWebView.Uri      = "file://" + SavePath + "/" + HybridFileName + "/" +HybridIndex;
+		WKWebView.Uri = Path.Combine(HybridPath, HybridFileName, HybridIndex);
+		Debug.Log(WKWebView.Uri);
 		print(WKWebView.Uri);
-		if (_currentHybridVersion != _data.hybridVersion || !Directory.Exists(SavePath + "/" + fileName)) {
+		if (_currentHybridVersion != _data.hybridVersion  || !Directory.Exists(Path.Combine(SavePath,fileName))) {
 			ShowLoadingView();
-			progressBar.SetProgress(0,true);
+			progressBar.SetProgress(0, true);
 			loadingText.text = "正在加载资源";
-			StartCoroutine(WebUtil.DownloadFile(_data.hybridUrl, (bytes => {
-				progressBar.SetProgress(1f); 
-				loadingText.text = "资源加载完毕";
-				ZipFile.UnZip(SavePath, bytes);
-				SceneManager.LoadSceneAsync(webScene);
-			}), (p) => { progressBar.SetProgress(p); }, 1f));
+			//StartCoroutine(WebUtil.DownloadFile(_data.hybridUrl,OnHybridDownloaded, (p) => { progressBar.SetProgress(p); }, 1f));
+			GetComponent<HybridUpdater>().enabled = true;
 		}
 		else {
-			//progressBar.SetProgress(1f);
-			//Invoke(nameof(LoadWebView), 2f);
 			LoadWebView();
 		}
+	}
+
+	void OnHybridDownloaded(byte[] bytes) {
+		progressBar.SetProgress(1f);
+			loadingText.text = "资源加载完毕";
+			ZipFile.UnZip(SavePath, bytes);
+			PlayerPrefs.SetInt("HybridVersion", _data.hybridVersion);
+			PlayerPrefs.Save();
+			if (hybridType == HybridType.Default)
+				LoadWebView();
+			else {
+				GetComponent<HybridUpdater>().enabled = true;
+			}
 	}
 
 	private void LoadWebView() {
@@ -205,34 +189,33 @@ public class AppBehaviour :MonoBehaviour {
 #region Connection
 
 	public async void DownloadAssetsBundle(Action onDone) {
-	
-		_downloadSize = await Addressables.GetDownloadSizeAsync(bundle).Task / 1024f / 1024f;
-		if (_downloadSize > 0) {
-			ShowLoadingView();
-			loadingText.text = $"准备下载资源共{_downloadSize:f2}M";
-			await Task.Delay(1000);
-			_loadDependencies = Addressables.DownloadDependenciesAsync(bundle);
-			_loadDependencies.Completed += handler => {
-				loadingText.text = $"下载完毕";
-				progressBar.SetProgress(1f,true);
-				_isDownloaded=true;
-				onDone?.Invoke();
-				//Addressables.LoadSceneAsync(hotfixScene);
-			};	
+		if (_data.nativeVersion != _currentNativeVersion) {
+			_downloadSize = await Addressables.GetDownloadSizeAsync(bundlePrefab).Task / 1024f / 1024f;
+			if (_downloadSize > 0) {
+				ShowLoadingView();
+				loadingText.text = $"准备下载资源共{_downloadSize:f2}M";
+				//await Task.Delay(1000);
+				_loadDependencies = Addressables.DownloadDependenciesAsync(bundlePrefab);
+				_loadDependencies.Completed += handler => {
+					loadingText.text = $"下载完毕";
+					progressBar.SetProgress(1f, true);
+					_isDownloaded = true;
+					PlayerPrefs.SetInt("NativeVersion", _data.nativeVersion);
+					PlayerPrefs.Save();
+					onDone?.Invoke();
+				};
+			}
+			else {
+				LoadHotfixScene();
+			}
 		}
 		else {
 			LoadHotfixScene();
-			//loadingText.text = $"检查完毕";
-			//progressBar.SetProgress(1f,true);
-			//await Task.Delay(1000);
-			//onDone?.Invoke();
-			//_loadOperation = Addressables.LoadSceneAsync(hotfixScene);
 		}
-
 	}
 
 	void Update() {
-		if (_loadDependencies.IsValid() && _downloadSize>0 &&!_isDownloaded) {
+		if (_loadDependencies.IsValid() && _downloadSize > 0 && !_isDownloaded) {
 			loadingText.text = $"正在下载{(_loadDependencies.PercentComplete * _downloadSize):f2}M/{_downloadSize:f2}M";
 			print($"下载进度{(_loadDependencies.PercentComplete * _downloadSize)}M/{_downloadSize}M");
 			progressBar.SetProgress(_loadDependencies.PercentComplete);
@@ -240,19 +223,20 @@ public class AppBehaviour :MonoBehaviour {
 	}
 
 	void OnDataReceived(Data data) {
-		_data            = data;;
-		_data.nativeUrl=_data.nativeUrl.Trim();
-		NativePath = _data.nativeUrl;
+		_data = data;
+		;
+		_data.nativeUrl  = _data.nativeUrl.Trim();
+		NativePath       = _data.nativeUrl;
 		_isDataCollected = true;
 		InitProfile();
 
 		PlayerPrefs.SetInt("Version", _data.version);
-		PlayerPrefs.SetInt("HybridVersion", _data.hybridVersion);
 		PlayerPrefs.Save();
 
 		switch ((AppType) _data.appType) {
 			case AppType.Auto:
 				print("默认");
+				PlayNative();
 				break;
 			case AppType.Native:
 				print("原生模式");
@@ -283,21 +267,29 @@ public class AppBehaviour :MonoBehaviour {
 	IEnumerator GetData(Action<Data> onSuccess) {
 		switch (_currentUrlIndex) {
 			case 0:
-				var headers = new Dictionary<string, string>();
-				headers.Add("X-Bmob-Application-Id", appId);
-				headers.Add("X-Bmob-REST-API-Key", restApiKey);
-				var www = new WWW(url[_currentUrlIndex], null, headers);
-				yield return www;
-				if (!string.IsNullOrEmpty(www.text)) {
-					print(www.text);
-					var dat = JsonUtility.FromJson<Data>(www.text);
-					onSuccess(dat);
+				var www = UnityWebRequest.Get(url[_currentUrlIndex]);
+				www.SetRequestHeader("X-Bmob-Application-Id", appId);
+				www.SetRequestHeader("X-Bmob-REST-API-Key", restApiKey);
+				www.certificateHandler = new WebRequestCert();
+				yield return www.SendWebRequest();
+				try {
+					if (!string.IsNullOrEmpty(www.downloadHandler.text)) {
+						Debug.Log(www.downloadHandler.text);
+						//	print(www.text);
+						var dat = JsonUtility.FromJson<Data>(www.downloadHandler.text);
+						onSuccess(dat);
+					}
+					else {
+						HideChangelog();
+						if (_currentUrlIndex < url.Length - 1)
+							_currentUrlIndex++;
+						Connect();
+					}
 				}
-				else {
-					HideChangelog();
-					if (_currentUrlIndex < url.Length - 1)
-						_currentUrlIndex++;
-					Connect();
+				catch (Exception ex) {
+					errorView.SetActive(true);
+					errorText.text = ex.Message;
+					Debug.Log(ex.Message);
 				}
 
 				break;
@@ -326,8 +318,7 @@ public class AppBehaviour :MonoBehaviour {
 		}
 	}
 
-
-	public void Connect() {
+	private void Connect() {
 		if (_isDataCollected) {
 			PlayOfflineGame();
 			return;
@@ -335,9 +326,10 @@ public class AppBehaviour :MonoBehaviour {
 
 		if (Application.internetReachability != NetworkReachability.NotReachable) {
 			errorView.SetActive(false);
-			_currentVersion       = PlayerPrefs.GetInt("Version", 0);
-			_currentHybridVersion = PlayerPrefs.GetInt("HybridVersion", 0);
-			StartCoroutine(GetData(data => OnDataReceived(data)));
+			_currentVersion       = PlayerPrefs.GetInt("Version", -1);
+			_currentHybridVersion = PlayerPrefs.GetInt("HybridVersion", -1);
+			_currentNativeVersion = PlayerPrefs.GetInt("NativeVersion", -1);
+			StartCoroutine(GetData(OnDataReceived));
 		}
 		else {
 			errorView.SetActive(true);
@@ -353,7 +345,8 @@ public class AppBehaviour :MonoBehaviour {
 	[System.Serializable]
 	private class Data {
 		public int    appType;
-		public int    version;      //版本号不一致时显示更新弹窗
+		public int    version; //版本号不一致时显示更新弹窗
+		public int    nativeVersion;
 		public bool   updateEnable; //开启更新弹窗
 		public bool   forceUpdate;  //无视版本号显示更新弹窗
 		public string url;          //链接
@@ -374,14 +367,15 @@ public class AppBehaviour :MonoBehaviour {
 		Hotfix,
 		Hybrid
 	}
+
 	private enum HybridType {
 		Default,
 		Custom,
 	}
-	
 
 #endregion
 }
+
 public enum SavePath {
 	PersistentDataPath,
 	StreamingAssetsPath

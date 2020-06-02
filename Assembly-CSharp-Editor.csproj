@@ -308,9 +308,6 @@
  <Reference Include="UnityEditor.iOS.Extensions">
  <HintPath>/Applications/Unity/Hub/Editor/2019.3.0f3/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="CsvHelper">
- <HintPath>/Users/sunegg/Desktop/Sunegg/Appegg/Assets/Plugins/CsvHelper.dll</HintPath>
- </Reference>
  <Reference Include="ILRuntime.Mono.Cecil.Pdb">
  <HintPath>/Users/sunegg/Desktop/Sunegg/Appegg/Library/PackageCache/com.ourpalm.ilruntime@1.6.1/Plugins/ILRuntime.Mono.Cecil.Pdb.dll</HintPath>
  </Reference>
@@ -319,6 +316,9 @@
  </Reference>
  <Reference Include="ILRuntim.Mono.Cecil">
  <HintPath>/Users/sunegg/Desktop/Sunegg/Appegg/Library/PackageCache/com.ourpalm.ilruntime@1.6.1/Plugins/ILRuntim.Mono.Cecil.dll</HintPath>
+ </Reference>
+ <Reference Include="CsvHelper">
+ <HintPath>/Users/sunegg/Desktop/Sunegg/Appegg/Assets/Appegg/Plugins/CsvHelper.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/sunegg/Desktop/Sunegg/Appegg/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
@@ -685,10 +685,6 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{B111D78A-BC92-2074-1012-77A46E3408B5}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{7BA972CF-60A6-F8A5-CED5-3C2094CB048C}</Project>
       <Name>Assembly-CSharp</Name>

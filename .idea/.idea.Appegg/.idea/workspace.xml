@@ -8,22 +8,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/ConfigDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/WKWebView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/UriHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/HybridUpdater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/WKWebView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/GameBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Workshop/Shell/_Done/Dakadayu-bug/Assets/Appegg/Scripts/Core/AALoadPrefab.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AALoadPrefab.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Hybrid/HybridUpdater.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/WKWebView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/ConfigDto.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" />
         <option value="$PROJECT_DIR$/Assets/Updater.cs" />
         <option value="$PROJECT_DIR$/Assets/HybridUpdater.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/WKWebView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Hybrid/HybridUpdater.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Hybrid/HybridUpdater.cs" />
       </list>
     </option>
   </component>
@@ -75,6 +79,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Appegg/Scripts/Hybrid/HybridUpdater.cs</url>
+          <line>93</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Appegg/Scripts/Hybrid/HybridUpdater.cs" initialLine="74">
+            <startOffsets>
+              <option value="2954" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2955" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
