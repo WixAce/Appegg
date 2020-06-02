@@ -1,0 +1,11 @@
+TDF1.0											
+s	,s	,s	,s	,v	,d	,d	,d	,v	,s	,s	,d
+ID	,名称	,分类	,前续任务	,条件	,金币奖励	,钻石奖励	,奖券奖励	,物品奖励	,图标	,说明	,排序
+"Task_EveryDay_0001"	,"捕鱼"	,"A"	,""	,[["jcbycatchfish_2",100]]	,1000	,0	,0	,[]	,"item/shopitem_gold3.png"	,"捕获小草鱼100条"	,8
+"Task_EveryDay_0002"	,"捕鱼"	,"A"	,""	,[["jcbycatchfish_6",30]]	,1000	,0	,0	,[]	,"item/shopitem_gold3.png"	,"捕获公主鱼30条"	,7
+"Task_EveryDay_0003"	,"捕鱼"	,"A"	,""	,[["jcbycatchfish_10",20]]	,1000	,0	,0	,[]	,"item/shopitem_gold3.png"	,"捕获灯笼鱼20个"	,6
+"Task_EveryDay_0004"	,"捕鱼"	,"A"	,""	,[["jcbycatchfish_15",20]]	,1000	,0	,0	,[]	,"item/shopitem_gold3.png"	,"捕获蓝鲨20条"	,5
+"Task_EveryDay_0005"	,"捕鱼"	,"A"	,""	,[["jcbycatchfish_12",20]]	,1000	,0	,0	,[]	,"item/shopitem_gold3.png"	,"捕获蝙蝠鱼20条"	,4
+"Task_EveryDay_0006"	,"捕鱼"	,"A"	,""	,[["jcbycatchfish_17",5]]	,1000	,0	,0	,[]	,"item/shopitem_gold3.png"	,"捕获金锤头鲨5条"	,3
+"Task_EveryDay_0007"	,"捕鱼"	,"A"	,""	,[["jcbycatchfish_20",3]]	,2000	,0	,0	,[]	,"item/shopitem_gold3.png"	,"捕获小丑鱼王3个"	,2
+"Task_EveryDay_0008"	,"开宝箱"	,"B"	,""	,[["jcbyopenbox",10]]	,3000	,0	,0	,[]	,"item/shopitem_gold3.png"	,"开启宝箱10次"	,1

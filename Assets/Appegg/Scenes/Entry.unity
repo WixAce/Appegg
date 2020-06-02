@@ -706,11 +706,11 @@ MonoBehaviour:
   builtInScene: Main
   hotfixScene: Hotfix
   hotfixFile: Hotfix.dll
-  bundle: Game
+  bundlePrefab: Game
   clearCache: 0
   hybridType: 0
   appType: 4
-  savePath: 0
+  savePath: 1
 --- !u!4 &665053089
 Transform:
   m_ObjectHideFlags: 0
@@ -740,6 +740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadingText: {fileID: 1786417844}
   progressBar: {fileID: 541462245}
+  webScene: Web
 --- !u!1 &693039056
 GameObject:
   m_ObjectHideFlags: 0

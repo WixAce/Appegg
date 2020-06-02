@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
-using Boo.Lang;
-using CsvHelper;
-using CsvHelper.Configuration;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -66,7 +65,6 @@ public class HybridUpdater : MonoBehaviour {
 			var localFileMd5  = GetMD5HashFromFile(localFilePath).ToUpper();
 			loadingText.text = $"正在加载{localFileName}";
 			progressBar.SetProgress(count * 1f / fileLen);
-			print(count * 1f / fileLen);
 			if (localFileMd5 == f.key) {
 				Debug.Log($"本地文件{localFileName}与服务端md5一致:{localFileMd5}");
 			}
@@ -104,35 +102,46 @@ public class HybridUpdater : MonoBehaviour {
 	}
 
 	private List<Files> GetCsv() {
-		using (var reader = new StreamReader(_filesPath))
-			using (var csv = new CsvReader(reader)) {
-				csv.Configuration.IgnoreBlankLines = false;
-				csv.Configuration.RegisterClassMap<FilesMap>();
-				var filesRecords = new List<Files>();
-				var isHeader     = true;
-				while (csv.Read()) {
-					if (isHeader) {
-						csv.ReadHeader();
-						isHeader = false;
-						continue;
+		var filesRecords = new List<Files>();
+		var files = File.ReadAllText(_filesPath);
+		print(files);
+		string[][] csv = CsvParser2.Parse(files);
+		var len=csv.Length;
+		for (int i = 3; i < len; i++) {
+			filesRecords.Add(new Files(){path =csv[i][0],size = csv[i][1],key = csv[i][2]});
+		}
+		return filesRecords;
+		/*	using (var reader = new StreamReader(_filesPath))
+				using (var csv = new CsvReader(reader,CultureInfo.CurrentCulture)) {
+					csv.Configuration.IgnoreBlankLines = false;
+					
+					//FilesMap filesMap = new FilesMap();
+					//csv.Configuration.RegisterClassMap(filesMap);
+					
+					//IOS被禁用
+					//csv.Configuration.RegisterClassMap<FilesMap>();
+					var filesRecords = new List<Files>();
+					var isHeader     = true;
+					while (csv.Read()) {
+						if (isHeader) {
+							csv.ReadHeader();
+							isHeader = false;
+							continue;
+						}
+						if (csv.GetField(0) == "s") {
+							isHeader = true;
+							continue;
+						}
+						switch (csv.Context.HeaderRecord[0]) {
+							case "path":
+								filesRecords.Add(csv.GetRecord<Files>());
+								break;
+							default:
+								throw new InvalidOperationException("Unknown record type.");
+						}
 					}
-
-					if (csv.GetField(0) == "s") {
-						isHeader = true;
-						continue;
-					}
-
-					switch (csv.Context.HeaderRecord[0]) {
-						case "path":
-							filesRecords.Add(csv.GetRecord<Files>());
-							break;
-						default:
-							throw new InvalidOperationException("Unknown record type.");
-					}
-				}
-
-				return filesRecords;
-			}
+					return filesRecords;
+				}*/
 	}
 
 	private string Md5Sum(string strToEncrypt) {
@@ -180,11 +189,11 @@ public class HybridUpdater : MonoBehaviour {
 		public string key  { get; set; }
 	}
 
-	public sealed class FilesMap : ClassMap<Files> {
+	/*public sealed class FilesMap : ClassMap<Files> {
 		public FilesMap() {
 			Map(m => m.path);
 			Map(m => m.size);
 			Map(m => m.key);
 		}
-	}
+	}*/
 }

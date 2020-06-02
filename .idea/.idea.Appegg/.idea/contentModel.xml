@@ -11,6 +11,21 @@
             <e p="UnityWebViewPostprocessBuild.cs" t="Include" />
           </e>
           <e p="Plugins" t="Include">
+            <e p="CSV2Table" t="Include">
+              <e p="Demo" t="Include">
+                <e p="C2TDemo.cs" t="Include" />
+                <e p="SampleTable.cs" t="Include" />
+              </e>
+              <e p="Editor" t="Include">
+                <e p="CSV2Table.cs" t="Include" />
+                <e p="CSVView.cs" t="Include" />
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="CsvParser.cs" t="Include" />
+                <e p="CsvParser2.cs" t="Include" />
+                <e p="TableCodeGen.cs" t="Include" />
+              </e>
+            </e>
             <e p="ICSharpCode.SharpZipLib" t="Include">
               <e p="BZip2" t="Include">
                 <e p="BZip2.cs" t="Include" />

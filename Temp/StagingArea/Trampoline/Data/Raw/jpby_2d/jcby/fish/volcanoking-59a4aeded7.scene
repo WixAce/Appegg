@@ -1,0 +1,1 @@
+{"type":"View","props":{"mouseThrough":true},"compId":2,"child":[{"type":"SkeletonPlayer","props":{"var":"sk","url":"res-game/jcby/fish/zhadangui.sk","rotation":-90,"runtime":"laya.ani.bone.Skeleton"},"compId":3},{"type":"Sprite","props":{"y":-167,"x":-85.5,"width":171,"var":"tp","height":250},"compId":6}],"loadList":["res-game/jcby/fish/zhadangui.sk"],"loadList3D":[]}
