@@ -1,9 +1,0 @@
-TDF1.0									
-d	,s	,s	,d	,d	,s	,d	,s	,s	,s
-编号	,商品编号	,名称	,价格	,钻石	,显示图片	,加送	,说明	,渠道	,类型
-1400001	,"6wangold"	,"6万金币"	,600	,60000	,"shopitem_gold1.png"	,0	,"6万金币"	,"all"	,"gold"
-1400002	,"30wangold"	,"30万金币"	,3000	,300000	,"shopitem_gold2.png"	,0	,"30万金币"	,"all"	,"gold"
-1400003	,"68wangold"	,"68万金币"	,6800	,680000	,"shopitem_gold3.png"	,0	,"68万金币"	,"all"	,"gold"
-1400004	,"108wangold"	,"108万金币"	,10800	,1080000	,"shopitem_gold4.png"	,0	,"108万金币"	,"all"	,"gold"
-1400005	,"328wangold"	,"328万金币"	,32800	,3280000	,"shopitem_gold4.png"	,0	,"328万金币"	,"all"	,"gold"
-1400006	,"518wangold"	,"518万金币"	,51800	,5180000	,"shopitem_gold4.png"	,0	,"518万金币"	,"all"	,"gold"

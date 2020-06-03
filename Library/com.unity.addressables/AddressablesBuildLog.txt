@@ -1,0 +1,79 @@
+Warning: The formatting in this file is subject to change.
+[Building Default Build Script] 3727009us
+ [ProcessAllGroups] 109313.8us
+ [ContentPipeline.BuildAssetBundles] 3323387.6us
+  [SwitchToBuildPlatform] 367.60000000001us
+  [RebuildSpriteAtlasCache] 457.999999999998us
+  [BuildPlayerScripts] 2741414us
+  [CalculateSceneDependencyData] 2127.80000000021us
+  [CalculateAssetDependencyData] 54727.8000000001us
+   [LoadCachedData] 6421.70000000033us
+    1 items
+    [GetCachedInfoFile] 503.700000000208us
+    [Read and deserialize cache info] 2755.59999999996us
+     Time spent deserializing: 1ms
+     Cache hit count: 0
+    [Check for changed dependencies] 507.900000000063us
+   [SaveCachedData] 13073.7000000004us
+    Saving 1 infos
+    [SetupOperations] 147.500000000036us
+    [SerializingCacheInfos] 12604.1us
+  [AddHashToBundleNameTask] 824.599999999919us
+  [StripUnusedSpriteSources] 993.299999999635us
+  [CreateBuiltInShadersBundle] 3983.30000000033us
+  [GenerateBundlePacking] 13822.9999999999us
+  [UpdateBundleObjectLayout] 1274.30000000004us
+  [GenerateBundleCommands] 9314.3us
+  [GenerateSubAssetPathMaps] 1890.10000000007us
+  [GenerateBundleMaps] 4205.50000000003us
+  [WriteSerializedFiles] 86262.6us
+   [RunCachedOperation] 80671.6000000001us
+    Total Entries: 1, Processed: 1, Cached: 0
+    [Creating Cache Entries] 8017.10000000003us
+    [Load Cached Data] 559.999999999945us
+     [LoadCachedData] 551.899999999932us
+      1 items
+      [GetCachedInfoFile] 128.099999999904us
+      [Read and deserialize cache info] 391.700000000128us
+       Time spent deserializing: 0ms
+       Cache hit count: 0
+      [Check for changed dependencies] 2.10000000015498us
+    [Process Entries] 59487.0000000001us
+     [Writing File AssetBundleWriteOperation] 45477.7999999997us
+    [Process Cached Entries] 17.2999999999774us
+    [Saving to Cache] 7946.69999999996us
+     [Creating Cached Infos] 674.800000000232us
+     [SaveCachedData] 7259.00000000001us
+      Saving 1 infos
+      [SetupOperations] 131.30000000001us
+      [SyncPendingSaves] 10.5999999996129us
+      [SerializingCacheInfos] 6876.09999999995us
+  [ArchiveAndCompressBundles] 49691.2000000002us
+   [CreateWorkItems] 5290.19999999991us
+   [Creating Cache Entries] 2679.99999999984us
+   [Load Cached Data] 433.899999999994us
+    [LoadCachedData] 426.99999999968us
+     1 items
+     [GetCachedInfoFile] 82.1000000000822us
+     [Read and deserialize cache info] 319.899999999961us
+      Time spent deserializing: 0ms
+      Cache hit count: 0
+     [Check for changed dependencies] 2.10000000015498us
+   [CopyingCachedFiles] 11.3999999998669us
+   [ArchiveItems] 25894.3999999997us
+    Archiving 1 Bundles
+    [Archive b1eb4281049d16f25353a90ebb3e72c1.bundle] 5945.6us
+     [Copying From Cache Library/BuildCache/a6/a6dc590096c3b0f53627ceb5859cad12/a7d636cea1654ae3e33f799087d8d200/b1eb4281049d16f25353a90ebb3e72c1.bundle -> Temp/com.unity.addressables/AssetBundles/b1eb4281049d16f25353a90ebb3e72c1.bundle] 1193.1us
+   [PostArchiveProcessing] 4707.09999999963us
+   [Copying To Cache] 1043.20000000007us
+    [SaveCachedData] 771.900000000187us
+     Saving 1 infos
+     [SetupOperations] 91.4000000002488us
+     [SyncPendingSaves] 5.09999999985666us
+     [SerializingCacheInfos] 471.599999999853us
+  [GenerateLocationListsTask] 5026.40000000019us
+  [ExtractDataTask] 174.89999999998us
+  [SyncPendingSaves] 7.49999999970896us
+ [PostProcessBundles] 108025.8us
+  [Copying File Temp/com.unity.addressables/AssetBundles/b1eb4281049d16f25353a90ebb3e72c1.bundle -> ServerData/iOS/packedassets_assets_all_04b3203cd64686fd860bdcbfada3b6d6.bundle] 825.599999999667us
+ [Catalog Entries.] 99259.3000000002us

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.iOS;
@@ -73,7 +71,7 @@ public class AppBehaviour : MonoBehaviour {
 			Connect();
 		});
 	}
-
+	
 #region Private Methods
 
 #region Init
@@ -154,13 +152,12 @@ public class AppBehaviour : MonoBehaviour {
 		//WKWebView.Uri      = "file://" + SavePath + "/" + HybridFileName + "/" +HybridIndex;
 		WKWebView.Uri = Path.Combine(HybridPath, HybridFileName, HybridIndex);
 		Debug.Log(WKWebView.Uri);
-		print(WKWebView.Uri);
 		if (_currentHybridVersion != _data.hybridVersion  || !Directory.Exists(Path.Combine(SavePath,fileName))) {
 			ShowLoadingView();
 			progressBar.SetProgress(0, true);
 			loadingText.text = "正在加载资源";
-			//StartCoroutine(WebUtil.DownloadFile(_data.hybridUrl,OnHybridDownloaded, (p) => { progressBar.SetProgress(p); }, 1f));
-			GetComponent<HybridUpdater>().enabled = true;
+			StartCoroutine(WebUtil.DownloadFile(_data.hybridUrl,OnHybridDownloaded, (p) => { progressBar.SetProgress(p); }, 1f));
+			//GetComponent<HybridUpdater>().enabled = true;
 		}
 		else {
 			LoadWebView();

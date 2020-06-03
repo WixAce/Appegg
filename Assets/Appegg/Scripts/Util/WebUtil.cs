@@ -4,6 +4,19 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 static class WebUtil {
+	
+	public static IEnumerator SaveText(string url, string savePath) {
+		using (UnityWebRequest www = UnityWebRequest.Get(url)) {
+			yield return www.Send();
+			if (www.isNetworkError || www.isHttpError) {
+				Debug.Log(www.error);
+			}
+			else {
+				System.IO.File.WriteAllText(savePath, www.downloadHandler.text);
+			}
+		}
+	}
+
 	public static IEnumerator GetJson<T>(string url, Action<T> success, Action failure = null) {
 		yield return GetText(url, data => { success?.Invoke(JsonUtility.FromJson<T>(data)); }, failure);
 	}
@@ -18,6 +31,19 @@ static class WebUtil {
 		else {
 			//Debug.Log(System.Text.RegularExpressions.Regex.Unescape(www.downloadHandler.text));
 			success?.Invoke(www.downloadHandler.text);
+		}
+	}
+
+	public static IEnumerator GetBytes(string url, Action<byte[]> onDownloaded) {
+		UnityWebRequest www = new UnityWebRequest(url);
+		www.downloadHandler = new DownloadHandlerBuffer();
+		yield return www.SendWebRequest();
+		if (www.isNetworkError || www.isHttpError) {
+			Debug.Log(www.error);
+		}
+		else {
+			byte[] results = www.downloadHandler.data;
+			onDownloaded.Invoke(results);
 		}
 	}
 
