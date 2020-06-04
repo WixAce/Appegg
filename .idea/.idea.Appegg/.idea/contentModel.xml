@@ -7,8 +7,8 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Appegg" t="Include">
-          <e p="AssetLoader.cs" t="Include" />
           <e p="Editor" t="Include">
+            <e p="AppeggEditor.cs" t="Include" />
             <e p="UnityWebViewPostprocessBuild.cs" t="Include" />
           </e>
           <e p="Plugins" t="Include">
@@ -121,16 +121,18 @@
               </e>
             </e>
           </e>
-          <e p="RemoteAssetsLoader.cs" t="Include" />
           <e p="Scripts" t="Include">
             <e p="Core" t="Include">
-              <e p="AALoadPrefab.cs" t="Include" />
-              <e p="AppBehaviour.cs" t="Include" />
               <e p="Appegg.cs" t="Include" />
-              <e p="GameBehaviour.cs" t="Include" />
-              <e p="WebRequestCert.cs" t="Include" />
-              <e p="WebViewObject.cs" t="Include" />
-              <e p="WKWebView.cs" t="Include" />
+              <e p="AppeggConfig.cs" t="Include" />
+              <e p="AppeggLoader.cs" t="Include" />
+              <e p="AppeggView.cs" t="Include" />
+              <e p="HotfixBehaviour.cs" t="Include" />
+            </e>
+            <e p="Deprecated" t="Include">
+              <e p="AppBehaviour.cs" t="Include" />
+              <e p="AssetLoader.cs" t="Include" />
+              <e p="RemoteAssetsLoader.cs" t="Include" />
             </e>
             <e p="Hybrid" t="Include">
               <e p="ConfigDto.cs" t="Include" />
@@ -144,6 +146,11 @@
             <e p="View" t="Include">
               <e p="UINetworkImage.cs" t="Include" />
               <e p="UIProgressBar.cs" t="Include" />
+            </e>
+            <e p="Web" t="Include">
+              <e p="WebRequestCert.cs" t="Include" />
+              <e p="WebViewObject.cs" t="Include" />
+              <e p="WKWebView.cs" t="Include" />
             </e>
           </e>
         </e>

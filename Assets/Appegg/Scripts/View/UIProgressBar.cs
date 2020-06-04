@@ -3,11 +3,17 @@ using UnityEngine.UI;
 
 public class UIProgressBar : MonoBehaviour {
     
-    [SerializeField] private Text _progressText;
-    [SerializeField] private Image _progressBar;
+    private Text _progressText;
+    private Image _progressBar;
 
-    public float Speed = 2f;
+    [SerializeField] private float speed = 2f;
+    
     private float _target=0f;
+
+    private void Awake() {
+	    _progressText = GetComponentInChildren<Text>();
+	    _progressBar = GetComponentsInChildren<Image>()[1];
+    }
 
     private void OnEnable() {
 	    _progressBar.fillAmount = 0f;
@@ -21,7 +27,7 @@ public class UIProgressBar : MonoBehaviour {
     }
 
     void Update() {
-	    _progressBar.fillAmount = Mathf.Lerp(_progressBar.fillAmount,_target,Time.deltaTime*Speed);
+	    _progressBar.fillAmount = Mathf.Lerp(_progressBar.fillAmount,_target,Time.deltaTime*speed);
 	    _progressText.text = Mathf.RoundToInt(  _progressBar.fillAmount * 100) + "%";
     }
 }

@@ -8,20 +8,20 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../Workshop/Shell/_Done/Dakadayu-bug/Assets/Appegg/Scripts/Core/AALoadPrefab.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Hybrid/HybridUpdater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/HotfixBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Editor/AppeggEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/AssetLoader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/RemoteAssetsLoader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Runtime/AddressablesImpl.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/GameBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Appegg.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Editor/Settings/ProfileValueReference.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Workshop/Shell/_Done/Dakadayu-bug/Assets/Appegg/Scripts/Core/AALoadPrefab.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/UriHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/WebViewObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/WKWebView.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AALoadPrefab.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/View/UIProgressBar.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Hybrid/HybridUpdater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Appegg.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Runtime/AddressablesImpl.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -34,12 +34,25 @@
         <option value="$PROJECT_DIR$/Assets/Appegg/Plugins/CsvHelper/Expressions/DynamicRecordWriter.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Plugins/CsvHelper/Expressions/RecordWriterFactory.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Hybrid/HybridUpdater.cs" />
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" />
         <option value="$PROJECT_DIR$/Assets/AssetLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AALoadPrefab.cs" />
         <option value="$PROJECT_DIR$/Assets/RemoteAssetsLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/New/AppeggViewType.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/ServerConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/View/UIProgressBar.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/New/AppeggView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/New/Appegg.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Editor/AppeggEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/WebRequestCert.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Deprecated/AppBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/HotfixBehaviour.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggView.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Appegg.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" />
       </list>
     </option>
   </component>
@@ -55,7 +68,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
   </component>
-  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+  <component name="RunManager">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -72,13 +85,36 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="WindowStateProjectService">
+    <state x="496" y="181" key="#Plugins" timestamp="1591265274677">
+      <screen x="0" y="23" width="1792" height="986" />
+    </state>
+    <state x="496" y="181" key="#Plugins/0.23.1792.986@0.23.1792.986" timestamp="1591265274677" />
     <state x="397" y="155" key="SettingsEditor" timestamp="1591192957516">
       <screen x="0" y="23" width="1792" height="986" />
     </state>
     <state x="397" y="155" key="SettingsEditor/0.23.1792.986@0.23.1792.986" timestamp="1591192957516" />
-    <state x="561" y="240" width="670" height="676" key="search.everywhere.popup" timestamp="1591104755513">
+    <state x="561" y="240" width="670" height="676" key="search.everywhere.popup" timestamp="1591283434069">
       <screen x="0" y="23" width="1792" height="986" />
     </state>
-    <state x="561" y="240" width="670" height="676" key="search.everywhere.popup/0.23.1792.986@0.23.1792.986" timestamp="1591104755513" />
+    <state x="561" y="240" width="670" height="676" key="search.everywhere.popup/0.23.1792.986@0.23.1792.986" timestamp="1591283434069" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Deprecated/AppBehaviour.cs</url>
+          <line>188</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Deprecated/AppBehaviour.cs" initialLine="189">
+            <startOffsets>
+              <option value="6136" />
+            </startOffsets>
+            <endOffsets>
+              <option value="6137" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
