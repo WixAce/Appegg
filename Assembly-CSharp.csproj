@@ -137,6 +137,7 @@
      <Compile Include="Assets\Appegg\Scripts\Core\AppeggLoader.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\AppeggView.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\HotfixBehaviour.cs" />
+     <Compile Include="Assets\Appegg\Scripts\Deprecated\AALoadPrefab.cs" />
      <Compile Include="Assets\Appegg\Scripts\Deprecated\AppBehaviour.cs" />
      <Compile Include="Assets\Appegg\Scripts\Deprecated\AssetLoader.cs" />
      <Compile Include="Assets\Appegg\Scripts\Deprecated\RemoteAssetsLoader.cs" />

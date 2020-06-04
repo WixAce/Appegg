@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Security.Policy;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.iOS;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.SceneManagement;
 
 public class Appegg : MonoBehaviour {
@@ -59,7 +64,7 @@ public class Appegg : MonoBehaviour {
 
 		_currentVersion       = PlayerPrefs.GetInt("Version", -1);
 		_currentHybridVersion = PlayerPrefs.GetInt("HybridVersion", -1);
-		_currentNativeVersion = PlayerPrefs.GetInt("NativeVersion", -1);
+		_currentNativeVersion = PlayerPrefs.GetInt("HotfixVersion", -1);
 	}
 
 	void InitViews(AppeggViewType viewType) {
@@ -119,7 +124,10 @@ public class Appegg : MonoBehaviour {
 
 	private void LoadWebView() => SceneManager.LoadSceneAsync(_scene.WebScene);
 
-	void LoadHotfixScene() => Addressables.LoadSceneAsync(_scene.HotfixScene);
+	void LoadHotfixScene() {
+		print("loadscene");
+		Addressables.LoadSceneAsync(_scene.HotfixScene);
+	}
 
 #endregion
 
@@ -145,28 +153,54 @@ public class Appegg : MonoBehaviour {
 #region Hotfix
 
 	private void PlayHotfixGame() {
-		//初始化之前先确定catalogurl
-		//加载catalog和dll
+		
+		AppeggConfig.HotfixUrl      = _serverConfig.nativeUrl;
+		AppeggConfig.AddressableUrl = Path.Combine(_serverConfig.nativeUrl, "iOS");
+
+		Debug.Log("开始加载配置文件"+Path.Combine(AppeggConfig.HotfixUrl, "config.json"));
 		StartCoroutine(WebUtil.GetJson<HotfixConfig>(Path.Combine(AppeggConfig.HotfixUrl, "config.json"), data => {
-			//Debug.Log(data);
-			//AppeggConfig.CatalogUrl = data.catalogUrl;
+			//Debug.Log(data.catalogUrl);
+			AppeggConfig.CatalogUrl = data.catalogUrl;
+			AppeggConfig.DllUrl = data.dllUrl;
 			//DownloadAssetsBundle("test", LoadHotfixScene);
+			AsyncOperationHandle<IResourceLocator> loadContentCatalogAsync = Addressables.LoadContentCatalogAsync(AppeggConfig.CatalogUrl);
+			//AsyncOperationHandle<IResourceLocator> loadContentCatalogAsync = Addressables.LoadContentCatalogAsync(remotePath);
+			loadContentCatalogAsync.Completed += OnLoadCatalogCompleted;
 		}));
 	}
+	
+	private void OnLoadCatalogCompleted(AsyncOperationHandle<IResourceLocator> obj)
+	{
+		IResourceLocator resourceLocator = obj.Result;
+		//resourceLocator.Locate("TestCanvas", typeof(GameObject), out IList<IResourceLocation> locations);
+		//resourceLocator.Locate("belt_metalX.prefab", typeof(GameObject), out IList<IResourceLocation> locations);
+		//IResourceLocation resourceLocation     = locations[0];
+		//GameObject        resourceLocationData =(GameObject) resourceLocation.Data;
+		//Addressables.InstantiateAsync(resourceLocation);  
+		var keys=resourceLocator.Keys.ToList();
+		foreach (var key in keys) {
+			Debug.Log(key);
+		}
+		DownloadAssetsBundle(keys, () => {
+			LoadHotfixScene();
+		});
+	}
 
-	private async void DownloadAssetsBundle(string key, Action onDone) {
+	private async void DownloadAssetsBundle(List<object> keys, Action onDone) {
 		if (_serverConfig.nativeVersion != _currentNativeVersion) {
-			_downloadSize = await Addressables.GetDownloadSizeAsync(key).Task / 1024f / 1024f;
+			_downloadSize = await Addressables.GetDownloadSizeAsync("Sanguo").Task / 1024f / 1024f;
 			if (_downloadSize > 0) {
 				InitViews(AppeggViewType.Loading);
 				_view.LoadingView.SetPrimaryText($"准备下载资源共{_downloadSize:f2}M");
 				//await Task.Delay(1000);
-				_loadDependencies = Addressables.DownloadDependenciesAsync(key);
+				//foreach (var key in keys) {
+					_loadDependencies = Addressables.DownloadDependenciesAsync("Sanguo");
+				//}
 				_loadDependencies.Completed += handler => {
 					_view.LoadingView.SetPrimaryText("下载完毕");
 					_view.LoadingView.SetProgress(1f, true);
 					_isDownloaded = true;
-					PlayerPrefs.SetInt("NativeVersion", _serverConfig.nativeVersion);
+					PlayerPrefs.SetInt("HotfixVersion", _serverConfig.nativeVersion);
 					PlayerPrefs.Save();
 					onDone?.Invoke();
 				};
@@ -194,6 +228,11 @@ public class Appegg : MonoBehaviour {
 #region Hybrid
 
 	private void PlayHybridGame() {
+		
+		AppeggConfig.LocalHybridPath = "file://" + SavePath;
+		AppeggConfig.HybridFileName = UriHelper.GetFileName(_serverConfig.hybridUrl, true);
+		AppeggConfig.HybridIndex    = _serverConfig.hybridIndex;
+		
 		WKWebView.IsHybrid = true;
 		WKWebView.Uri = Path.Combine(AppeggConfig.LocalHybridPath, AppeggConfig.HybridFileName,
 		                             AppeggConfig.HybridIndex);
@@ -249,15 +288,11 @@ public class Appegg : MonoBehaviour {
 
 
 	void OnDataReceived(ServerConfig serverConfig) {
+		
 		_serverConfig           = serverConfig;
 		_serverConfig.nativeUrl = _serverConfig.nativeUrl.Trim();
 		_serverConfig.hybridUrl = _serverConfig.hybridUrl.Trim();
 
-		AppeggConfig.LocalHybridPath = "file://" + SavePath;
-		AppeggConfig.HybridFileName  = UriHelper.GetFileName(_serverConfig.hybridUrl, true);
-		AppeggConfig.HybridIndex     = _serverConfig.hybridIndex;
-		AppeggConfig.HotfixUrl       = _serverConfig.nativeUrl;
-		AppeggConfig.AddressableUrl  = Path.Combine(_serverConfig.nativeUrl, "iOS");
 		AppeggConfig.IsDataCollected = true;
 
 		InitProfile();

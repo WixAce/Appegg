@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 468723168}
   - component: {fileID: 468723167}
   - component: {fileID: 468723166}
+  - component: {fileID: 468723169}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -204,6 +205,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &468723169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468723165}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68b5461709ef4d599ff5a6671e13a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - Sanguo
 --- !u!1 &1914646443
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,10 +347,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
+        type: 3}
+      propertyPath: _general.AppType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
+        type: 3}
+      propertyPath: _test.ServerConfig.nativeUrl
+      value: http://pgsdk.panguhy.com/assets/jpby
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
+        type: 3}
+      propertyPath: _test.EnableTest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
+        type: 3}
+      propertyPath: _test.ServerConfig.appType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
+        type: 3}
+      propertyPath: _test.ServerConfig.hybridUrl
+      value: http://pgsdk.panguhy.com/assets/jpby/hybrid
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
+        type: 3}
+      propertyPath: _scene.HotfixScene
+      value: Game
+      objectReference: {fileID: 0}
     - target: {fileID: 2280264843130396789, guid: 221819eb57b8e4dd4af5db39e1d87388,
         type: 3}
       propertyPath: m_Name
       value: Appegg
+      objectReference: {fileID: 0}
+    - target: {fileID: 2280264843130396789, guid: 221819eb57b8e4dd4af5db39e1d87388,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221819eb57b8e4dd4af5db39e1d87388, type: 3}

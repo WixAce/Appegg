@@ -11,11 +11,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/HotfixBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Editor/AppeggEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Deprecated/RemoteAssetsLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Editor/Settings/ProfileValueReference.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../Workshop/Shell/_Done/Dakadayu-bug/Assets/Appegg/Scripts/Core/AALoadPrefab.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/UriHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/View/UIProgressBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Hybrid/HybridUpdater.cs" root0="FORCE_HIGHLIGHTING" />
@@ -46,13 +48,14 @@
         <option value="$PROJECT_DIR$/Assets/Appegg/Editor/AppeggEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/WebRequestCert.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Deprecated/AppBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" />
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/HotfixBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggView.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Deprecated/RemoteAssetsLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Appegg.cs" />
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" />
       </list>
     </option>
   </component>

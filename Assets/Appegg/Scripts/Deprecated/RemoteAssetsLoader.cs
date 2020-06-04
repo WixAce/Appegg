@@ -19,10 +19,6 @@ public class RemoteAssetsLoader : MonoBehaviour {
 		}
 	}
 
-	void Awake() {
-		Url = "http://localhost:8000/Appegg/";
-	}
-	
 	void Start() {
 		print(Url);
 		AsyncOperationHandle<IResourceLocator> loadContentCatalogAsync = Addressables.LoadContentCatalogAsync(Url);

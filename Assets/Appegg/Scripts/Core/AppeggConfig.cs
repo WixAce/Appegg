@@ -15,6 +15,8 @@
 	/// </summary>
 	public static string HotfixUrl { get; set; }
 
+	public static string DllUrl { get; set; }
+	
 	public static string LocalHybridPath { get; set; }
 	public static string HybridFileName { get; set; }
 	public static string HybridIndex { get; set; }

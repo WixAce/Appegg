@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f910df9cd9ba945c5a0100619287503f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appeggViewType: 0
+  _appeggViewType: 0
 --- !u!1 &770032431856902515
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +586,7 @@ MonoBehaviour:
     HotfixScene: Hotfix
   _general:
     HybridType: 0
-    AppType: 4
+    AppType: 0
     DataPath: 0
   _test:
     EnableTest: 0
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f910df9cd9ba945c5a0100619287503f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appeggViewType: 2
+  _appeggViewType: 2
 --- !u!1 &4793106924937889898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1157,7 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f910df9cd9ba945c5a0100619287503f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appeggViewType: 1
+  _appeggViewType: 1
 --- !u!1 &6258412725993698456
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,9 +10,9 @@ public class HotfixBehaviour : MonoBehaviour {
 	private MemoryStream _fs;
 	private MemoryStream _p;
 
-	[SerializeField] private readonly string _type = "Hotfix.Game";
-	[SerializeField] private readonly string _method = "Initialize";
-	[SerializeField] private readonly string _instance = null;
+	[SerializeField] private string _type = "Hotfix.Game";
+	[SerializeField] private string _method = "Initialize";
+	[SerializeField] private string _instance = null;
 
 	void Start() {
 		StartCoroutine(LoadHotFixAssembly());
@@ -20,8 +20,8 @@ public class HotfixBehaviour : MonoBehaviour {
 
 	IEnumerator LoadHotFixAssembly() {
 		_appdomain = new AppDomain();
-		Debug.Log(AppBehaviour.NativePath + AppBehaviour.HotfixFileName);
-		WWW www = new WWW(AppBehaviour.NativePath + AppBehaviour.HotfixFileName);
+		Debug.Log(AppeggConfig.DllUrl);
+		WWW www = new WWW(AppeggConfig.DllUrl);
 		while (!www.isDone)
 			yield return null;
 		if (!string.IsNullOrEmpty(www.error))
@@ -52,31 +52,5 @@ public class HotfixBehaviour : MonoBehaviour {
 		_fs = null;
 		_p  = null;
 	}
-
-	/*private AppDomain appdomain;
-
-	void Start() {
-		LoadHotFixAssembly();
-	}
-
-	void LoadHotFixAssembly() {
-		appdomain = new AppDomain();
-		print(AppBehaviour.SavePath + "/" + AppBehaviour.HotfixFileName);
-		print("加载dll");
-		//LoadAssemblyFile(AppBehaviour.SavePath + "/" + AppBehaviour.HotfixFileName);
-		print("dll加载完毕");
-		InitializeILRuntime();
-		OnHotFixLoaded();
-	}
-
-
-	void InitializeILRuntime() {
-#if DEBUG && (UNITY_EDITOR || UNITY_ANDROID || UNITY_IPHONE)
-		appdomain.UnityMainThreadID = System.Threading.Thread.CurrentThread.ManagedThreadId;
-#endif
-	}
-
-	void OnHotFixLoaded() {
-		appdomain.Invoke("Hotfix.Game", "Initialize", null, null);
-	}*/
+	
 }

@@ -130,6 +130,7 @@
               <e p="HotfixBehaviour.cs" t="Include" />
             </e>
             <e p="Deprecated" t="Include">
+              <e p="AALoadPrefab.cs" t="Include" />
               <e p="AppBehaviour.cs" t="Include" />
               <e p="AssetLoader.cs" t="Include" />
               <e p="RemoteAssetsLoader.cs" t="Include" />

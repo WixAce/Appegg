@@ -46,7 +46,7 @@ static class WebUtil {
 			failure?.Invoke();
 		}
 		else {
-			//Debug.Log(System.Text.RegularExpressions.Regex.Unescape(www.downloadHandler.text));
+			Debug.Log(System.Text.RegularExpressions.Regex.Unescape(www.downloadHandler.text));
 			success?.Invoke(www.downloadHandler.text);
 		}
 	}

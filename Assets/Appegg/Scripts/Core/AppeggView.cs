@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class AppeggView : MonoBehaviour {
    
-   [SerializeField] private AppeggViewType appeggViewType;
+   [SerializeField] private AppeggViewType _appeggViewType;
 
    private UIProgressBar _progressBar;
    private Text _primaryText,_secondaryText; 
    private Button _primaryButton, _secondaryButton;
    
    public void Init() {
-      switch (appeggViewType) {
+      switch (_appeggViewType) {
          case AppeggViewType.Loading:
             _progressBar = GetComponentInChildren<UIProgressBar>();
             _primaryText = GetComponentInChildren<Text>();
-;            break;
+            break;
          case AppeggViewType.Changelog:
             var texts = GetComponentsInChildren<Text>();
             var buttons = GetComponentsInChildren<Button>();
