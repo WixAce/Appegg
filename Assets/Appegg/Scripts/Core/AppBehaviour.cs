@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class AppBehaviour : MonoBehaviour {
+	
 	[SerializeField]
 	private string appId = "e7ce6de73c72f9fe7ac52c7d71c5bb9e", restApiKey = "b383af81af3ce84dcd5bf6a2765ff40f";
 
@@ -48,7 +49,7 @@ public class AppBehaviour : MonoBehaviour {
 	private        AsyncOperationHandle<SceneInstance> _loadOperation;
 	private        AsyncOperationHandle                _loadDependencies;
 	private static string                              SavePath { get; set; }
-
+	
 	public static string HybridPath     { get; private set; }
 	public static string NativePath     { get; private set; }
 	

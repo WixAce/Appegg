@@ -7,6 +7,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Appegg" t="Include">
+          <e p="AssetLoader.cs" t="Include" />
           <e p="Editor" t="Include">
             <e p="UnityWebViewPostprocessBuild.cs" t="Include" />
           </e>
@@ -120,10 +121,12 @@
               </e>
             </e>
           </e>
+          <e p="RemoteAssetsLoader.cs" t="Include" />
           <e p="Scripts" t="Include">
             <e p="Core" t="Include">
               <e p="AALoadPrefab.cs" t="Include" />
               <e p="AppBehaviour.cs" t="Include" />
+              <e p="Appegg.cs" t="Include" />
               <e p="GameBehaviour.cs" t="Include" />
               <e p="WebRequestCert.cs" t="Include" />
               <e p="WebViewObject.cs" t="Include" />

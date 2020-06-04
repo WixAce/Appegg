@@ -134,7 +134,10 @@
      <Compile Include="Assets\Appegg\Plugins\ICSharpCode.SharpZipLib\Zip\ZipStrings.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\AALoadPrefab.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\AppBehaviour.cs" />
+     <Compile Include="Assets\Appegg\Scripts\Core\Appegg.cs" />
+     <Compile Include="Assets\Appegg\Scripts\Core\AssetLoader.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\GameBehaviour.cs" />
+     <Compile Include="Assets\Appegg\Scripts\Core\RemoteAssetsLoader.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\WKWebView.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\WebRequestCert.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\WebViewObject.cs" />

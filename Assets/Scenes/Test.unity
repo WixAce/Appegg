@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 1995138515}
   - component: {fileID: 1995138514}
   - component: {fileID: 1995138517}
+  - component: {fileID: 1995138518}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -304,8 +305,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995138513}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 429cd8d0c1bab4432b6321f3952dea7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingText: {fileID: 0}
+  progressBar: {fileID: 0}
+  webScene: Web
+--- !u!114 &1995138518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995138513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263abab2f8bd546559dee83258b16948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - TestCanvas
+  RemotePath: http://localhost:8000/Appegg/iOS/catalog_2020.06.03.16.02.07.json
