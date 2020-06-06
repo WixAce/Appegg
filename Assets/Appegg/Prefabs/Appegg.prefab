@@ -583,7 +583,6 @@ MonoBehaviour:
   _scene:
     WebScene: Web
     BuiltInScene: Main
-    HotfixScene: Hotfix
   _general:
     HybridType: 0
     AppType: 0
@@ -591,7 +590,7 @@ MonoBehaviour:
   _test:
     EnableTest: 0
     ServerConfig:
-      appType: 0
+      appType: 3
       version: 0
       nativeVersion: 0
       updateEnable: 0
@@ -602,8 +601,8 @@ MonoBehaviour:
       updateText: 
       hybridVersion: 0
       hybridIndex: index.html
-      hybridUrl: 
-      nativeUrl: 
+      hybridUrl: http://pgsdk.panguhy.com/assets/jpby/hybrid
+      nativeUrl: http://pgsdk.panguhy.com/assets/jpby
       picUrl: 
 --- !u!1 &2280264844670594677
 GameObject:

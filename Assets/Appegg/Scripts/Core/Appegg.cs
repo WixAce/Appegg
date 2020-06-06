@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Security.Policy;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.iOS;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.SceneManagement;
 
 public class Appegg : MonoBehaviour {
@@ -27,8 +26,8 @@ public class Appegg : MonoBehaviour {
 	[SerializeField] private GeneralConfig _general;
 
 	[SerializeField] private TestConfig _test;
-	
-	private static           string     SavePath { get; set; }
+
+	private static string SavePath { get; set; }
 
 	private ServerConfig _serverConfig;
 
@@ -125,8 +124,7 @@ public class Appegg : MonoBehaviour {
 	private void LoadWebView() => SceneManager.LoadSceneAsync(_scene.WebScene);
 
 	void LoadHotfixScene() {
-		print("loadscene");
-		Addressables.LoadSceneAsync(_scene.HotfixScene);
+		Addressables.LoadSceneAsync(AppeggConfig.AddressableScene);
 	}
 
 #endregion
@@ -153,65 +151,116 @@ public class Appegg : MonoBehaviour {
 #region Hotfix
 
 	private void PlayHotfixGame() {
-		
-		AppeggConfig.HotfixUrl      = _serverConfig.nativeUrl;
-		AppeggConfig.AddressableUrl = Path.Combine(_serverConfig.nativeUrl, "iOS");
+		//AppeggConfig.HotfixUrl      = _serverConfig.nativeUrl;
+		//AppeggConfig.AddressableUrl = Path.Combine(_serverConfig.nativeUrl, "iOS");
+		AppeggConfig.AddressableUrl = _serverConfig.nativeUrl;
+		;
 
-		Debug.Log("开始加载配置文件"+Path.Combine(AppeggConfig.HotfixUrl, "config.json"));
-		StartCoroutine(WebUtil.GetJson<HotfixConfig>(Path.Combine(AppeggConfig.HotfixUrl, "config.json"), data => {
-			//Debug.Log(data.catalogUrl);
-			AppeggConfig.CatalogUrl = data.catalogUrl;
-			AppeggConfig.DllUrl = data.dllUrl;
-			//DownloadAssetsBundle("test", LoadHotfixScene);
-			AsyncOperationHandle<IResourceLocator> loadContentCatalogAsync = Addressables.LoadContentCatalogAsync(AppeggConfig.CatalogUrl);
-			//AsyncOperationHandle<IResourceLocator> loadContentCatalogAsync = Addressables.LoadContentCatalogAsync(remotePath);
+		Debug.Log("开始加载配置文件" + Path.Combine(AppeggConfig.AddressableUrl, "config.json"));
+
+		if (_test.EnableHotfixConfigTest) {
+			AppeggConfig.CatalogUrl        = _test.HotfixConfig.catalogUrl;
+			AppeggConfig.DllUrl            = _test.HotfixConfig.dllUrl;
+			AppeggConfig.AddressablePrefab = _test.HotfixConfig.addressablePrefab;
+			AppeggConfig.AddressableScene  = _test.HotfixConfig.addressableScene;
+			AsyncOperationHandle<IResourceLocator> loadContentCatalogAsync =
+				Addressables.LoadContentCatalogAsync(AppeggConfig.CatalogUrl);
 			loadContentCatalogAsync.Completed += OnLoadCatalogCompleted;
-		}));
+		}
+		else
+			StartCoroutine(WebUtil.GetJson<HotfixConfig>(Path.Combine(AppeggConfig.AddressableUrl, "config.json"),
+			                                             data => {
+				                                             //Debug.Log(data.catalogUrl);
+				                                             AppeggConfig.CatalogUrl        = data.catalogUrl;
+				                                             AppeggConfig.DllUrl            = data.dllUrl;
+				                                             AppeggConfig.AddressablePrefab = data.addressablePrefab;
+				                                             AppeggConfig.AddressableScene  = data.addressableScene;
+				                                             //DownloadAssetsBundle("test", LoadHotfixScene);
+				                                             AsyncOperationHandle<IResourceLocator>
+					                                             loadContentCatalogAsync =
+						                                             Addressables.LoadContentCatalogAsync(AppeggConfig
+							                                                                                  .CatalogUrl);
+				                                             //AsyncOperationHandle<IResourceLocator> loadContentCatalogAsync = Addressables.LoadContentCatalogAsync(remotePath);
+				                                             loadContentCatalogAsync.Completed +=
+					                                             OnLoadCatalogCompleted;
+			                                             }));
 	}
-	
-	private void OnLoadCatalogCompleted(AsyncOperationHandle<IResourceLocator> obj)
-	{
+
+	private void OnLoadCatalogCompleted(AsyncOperationHandle<IResourceLocator> obj) {
 		IResourceLocator resourceLocator = obj.Result;
 		//resourceLocator.Locate("TestCanvas", typeof(GameObject), out IList<IResourceLocation> locations);
-		//resourceLocator.Locate("belt_metalX.prefab", typeof(GameObject), out IList<IResourceLocation> locations);
 		//IResourceLocation resourceLocation     = locations[0];
 		//GameObject        resourceLocationData =(GameObject) resourceLocation.Data;
 		//Addressables.InstantiateAsync(resourceLocation);  
-		var keys=resourceLocator.Keys.ToList();
-		foreach (var key in keys) {
-			Debug.Log(key);
-		}
-		DownloadAssetsBundle(keys, () => {
-			LoadHotfixScene();
-		});
+		//var keys = resourceLocator.Keys.ToList();
+		//foreach (var key in keys) {
+		//	Debug.Log(key);
+		//}
+		//DownloadAssetsBundle(keys, () => { LoadHotfixScene(); });
+		DownloadAssetsBundle(AppeggConfig.AddressablePrefab, LoadHotfixScene);
 	}
 
-	private async void DownloadAssetsBundle(List<object> keys, Action onDone) {
-		if (_serverConfig.nativeVersion != _currentNativeVersion) {
-			_downloadSize = await Addressables.GetDownloadSizeAsync("Sanguo").Task / 1024f / 1024f;
-			if (_downloadSize > 0) {
-				InitViews(AppeggViewType.Loading);
-				_view.LoadingView.SetPrimaryText($"准备下载资源共{_downloadSize:f2}M");
-				//await Task.Delay(1000);
-				//foreach (var key in keys) {
-					_loadDependencies = Addressables.DownloadDependenciesAsync("Sanguo");
-				//}
-				_loadDependencies.Completed += handler => {
-					_view.LoadingView.SetPrimaryText("下载完毕");
-					_view.LoadingView.SetProgress(1f, true);
-					_isDownloaded = true;
-					PlayerPrefs.SetInt("HotfixVersion", _serverConfig.nativeVersion);
-					PlayerPrefs.Save();
-					onDone?.Invoke();
-				};
-			}
-			else {
-				LoadHotfixScene();
-			}
+
+	private async void DownloadAssetsBundle(string key, Action onDone) {
+		//if (_serverConfig.nativeVersion != _currentNativeVersion) {
+		_downloadSize = await Addressables.GetDownloadSizeAsync(key).Task / 1024f / 1024f;
+		if (_downloadSize > 0 || _serverConfig.nativeVersion != _currentNativeVersion) {
+			InitViews(AppeggViewType.Loading);
+			_view.LoadingView.SetPrimaryText($"准备下载资源共{_downloadSize:f2}M");
+			//await Task.Delay(1000);
+			_loadDependencies = Addressables.DownloadDependenciesAsync(AppeggConfig.AddressablePrefab);
+			_loadDependencies.Completed += handler => {
+				_view.LoadingView.SetPrimaryText("下载完毕");
+				_view.LoadingView.SetProgress(1f, true);
+				_isDownloaded = true;
+				PlayerPrefs.SetInt("HotfixVersion", _serverConfig.nativeVersion);
+				PlayerPrefs.Save();
+				onDone?.Invoke();
+			};
 		}
 		else {
 			LoadHotfixScene();
 		}
+	}
+
+	private async void DownloadAssetsBundles(List<object> keys, Action onDone) {
+		//if (_serverConfig.nativeVersion != _currentNativeVersion) {
+		_downloadSize = await Addressables.GetDownloadSizeAsync(keys).Task / 1024f / 1024f;
+		if (_downloadSize > 0 || _serverConfig.nativeVersion != _currentNativeVersion) {
+			InitViews(AppeggViewType.Loading);
+			_view.LoadingView.SetPrimaryText($"准备下载资源共{_downloadSize:f2}M");
+			//await Task.Delay(1000);
+			foreach (var key in keys) {
+				_loadDependencies = Addressables.DownloadDependenciesAsync(key);
+				while (!_loadDependencies.IsDone) {
+					await Task.Yield();
+				}
+			}
+
+			_view.LoadingView.SetPrimaryText("下载完毕");
+			_view.LoadingView.SetProgress(1f, true);
+			_isDownloaded = true;
+			PlayerPrefs.SetInt("HotfixVersion", _serverConfig.nativeVersion);
+			PlayerPrefs.Save();
+			onDone?.Invoke();
+
+			/*_loadDependencies.Completed += handler => {
+				_view.LoadingView.SetPrimaryText("下载完毕");
+				_view.LoadingView.SetProgress(1f, true);
+				_isDownloaded = true;
+				PlayerPrefs.SetInt("HotfixVersion", _serverConfig.nativeVersion);
+				PlayerPrefs.Save();
+				onDone?.Invoke();
+			};*/
+		}
+		else {
+			LoadHotfixScene();
+		}
+
+		//}
+		//	else {
+		//	LoadHotfixScene();
+		//	}
 	}
 
 	void Update() {
@@ -228,11 +277,10 @@ public class Appegg : MonoBehaviour {
 #region Hybrid
 
 	private void PlayHybridGame() {
-		
 		AppeggConfig.LocalHybridPath = "file://" + SavePath;
-		AppeggConfig.HybridFileName = UriHelper.GetFileName(_serverConfig.hybridUrl, true);
-		AppeggConfig.HybridIndex    = _serverConfig.hybridIndex;
-		
+		AppeggConfig.HybridFileName  = UriHelper.GetFileName(_serverConfig.hybridUrl, true);
+		AppeggConfig.HybridIndex     = _serverConfig.hybridIndex;
+
 		WKWebView.IsHybrid = true;
 		WKWebView.Uri = Path.Combine(AppeggConfig.LocalHybridPath, AppeggConfig.HybridFileName,
 		                             AppeggConfig.HybridIndex);
@@ -275,7 +323,7 @@ public class Appegg : MonoBehaviour {
 		if (Application.internetReachability != NetworkReachability.NotReachable) {
 			_view.ErrorView.Hide();
 
-			if (_test.EnableTest)
+			if (_test.EnableServerConfigTest)
 				OnDataReceived(_test.ServerConfig);
 			else
 				StartCoroutine(WebUtil.GetDataFromBmob<ServerConfig>(_configUrl[0], _appId, _restApiKey, OnDataReceived,
@@ -288,7 +336,6 @@ public class Appegg : MonoBehaviour {
 
 
 	void OnDataReceived(ServerConfig serverConfig) {
-		
 		_serverConfig           = serverConfig;
 		_serverConfig.nativeUrl = _serverConfig.nativeUrl.Trim();
 		_serverConfig.hybridUrl = _serverConfig.hybridUrl.Trim();
@@ -336,8 +383,10 @@ public class Appegg : MonoBehaviour {
 
 	[System.Serializable]
 	private class TestConfig {
-		public bool         EnableTest;
+		public bool         EnableServerConfigTest;
+		public bool         EnableHotfixConfigTest;
 		public ServerConfig ServerConfig;
+		public HotfixConfig HotfixConfig;
 	}
 
 
@@ -364,6 +413,8 @@ public class Appegg : MonoBehaviour {
 		public string catalogUrl;
 		public string dllUrl;
 		public string dllMD5;
+		public string addressableScene;
+		public string addressablePrefab;
 	}
 
 	[System.Serializable]
@@ -373,7 +424,7 @@ public class Appegg : MonoBehaviour {
 
 	[System.Serializable]
 	private class SceneConfig {
-		public string WebScene = "Web", BuiltInScene = "Main", HotfixScene = "Hotfix";
+		public string WebScene = "Web", BuiltInScene = "Main";
 	}
 
 	[System.Serializable]
@@ -402,5 +453,4 @@ public class Appegg : MonoBehaviour {
 	}
 
 #endregion
-	
 }

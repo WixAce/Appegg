@@ -217,8 +217,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68b5461709ef4d599ff5a6671e13a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - Sanguo
+--- !u!1 &508069128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508069130}
+  - component: {fileID: 508069129}
+  m_Layer: 0
+  m_Name: ResourceManagerCallbacks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &508069129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508069128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a73b848f18b6b498c76e82b2551f0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &508069130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508069128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1914646443
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,13 +390,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
         type: 3}
-      propertyPath: _general.AppType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
-        type: 3}
       propertyPath: _test.ServerConfig.nativeUrl
-      value: http://pgsdk.panguhy.com/assets/jpby
+      value: http://pgsdk.panguhy.com/assets/sanguo
       objectReference: {fileID: 0}
     - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
         type: 3}
@@ -364,28 +400,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
         type: 3}
-      propertyPath: _test.ServerConfig.appType
-      value: 3
+      propertyPath: _test.EnableServerConfigTest
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
         type: 3}
-      propertyPath: _test.ServerConfig.hybridUrl
-      value: http://pgsdk.panguhy.com/assets/jpby/hybrid
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280264843130396779, guid: 221819eb57b8e4dd4af5db39e1d87388,
-        type: 3}
-      propertyPath: _scene.HotfixScene
-      value: Game
+      propertyPath: _general.AppType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2280264843130396789, guid: 221819eb57b8e4dd4af5db39e1d87388,
         type: 3}
       propertyPath: m_Name
       value: Appegg
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280264843130396789, guid: 221819eb57b8e4dd4af5db39e1d87388,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221819eb57b8e4dd4af5db39e1d87388, type: 3}

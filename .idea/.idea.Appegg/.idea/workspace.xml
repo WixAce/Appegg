@@ -11,10 +11,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/HotfixBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Editor/AppeggEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Deprecated/RemoteAssetsLoader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Editor/Settings/ProfileValueReference.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../Workshop/Shell/_Done/Dakadayu-bug/Assets/Appegg/Scripts/Core/AALoadPrefab.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/UriHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
@@ -48,14 +46,14 @@
         <option value="$PROJECT_DIR$/Assets/Appegg/Editor/AppeggEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/WebRequestCert.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Deprecated/AppBehaviour.cs" />
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/HotfixBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggView.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Deprecated/RemoteAssetsLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Appegg.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggLoader.cs" />
       </list>
     </option>
   </component>
@@ -71,7 +69,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -107,14 +105,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Deprecated/AppBehaviour.cs</url>
           <line>188</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Deprecated/AppBehaviour.cs" initialLine="189">
-            <startOffsets>
-              <option value="6136" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6137" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Deprecated/AppBehaviour.cs" initialLine="189" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>

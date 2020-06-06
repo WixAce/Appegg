@@ -58,8 +58,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Appegg\Plugins\CSV2Table\Demo\C2TDemo.cs" />
-     <Compile Include="Assets\Appegg\Plugins\CSV2Table\Demo\SampleTable.cs" />
      <Compile Include="Assets\Appegg\Plugins\CSV2Table\Scripts\CsvParser.cs" />
      <Compile Include="Assets\Appegg\Plugins\CSV2Table\Scripts\CsvParser2.cs" />
      <Compile Include="Assets\Appegg\Plugins\CSV2Table\Scripts\TableCodeGen.cs" />
@@ -137,12 +135,12 @@
      <Compile Include="Assets\Appegg\Scripts\Core\AppeggLoader.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\AppeggView.cs" />
      <Compile Include="Assets\Appegg\Scripts\Core\HotfixBehaviour.cs" />
-     <Compile Include="Assets\Appegg\Scripts\Deprecated\AALoadPrefab.cs" />
-     <Compile Include="Assets\Appegg\Scripts\Deprecated\AppBehaviour.cs" />
-     <Compile Include="Assets\Appegg\Scripts\Deprecated\AssetLoader.cs" />
-     <Compile Include="Assets\Appegg\Scripts\Deprecated\RemoteAssetsLoader.cs" />
      <Compile Include="Assets\Appegg\Scripts\Hybrid\ConfigDto.cs" />
      <Compile Include="Assets\Appegg\Scripts\Hybrid\HybridUpdater.cs" />
+     <Compile Include="Assets\Appegg\Scripts\Legacy\AALoadPrefab.cs" />
+     <Compile Include="Assets\Appegg\Scripts\Legacy\AppBehaviour.cs" />
+     <Compile Include="Assets\Appegg\Scripts\Legacy\AssetLoader.cs" />
+     <Compile Include="Assets\Appegg\Scripts\Legacy\RemoteAssetsLoader.cs" />
      <Compile Include="Assets\Appegg\Scripts\Util\UriHelper.cs" />
      <Compile Include="Assets\Appegg\Scripts\Util\WebUtil.cs" />
      <Compile Include="Assets\Appegg\Scripts\Util\ZipFile.cs" />
