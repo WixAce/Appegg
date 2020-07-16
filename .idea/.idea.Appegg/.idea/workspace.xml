@@ -8,20 +8,23 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/HotfixBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Editor/AppeggEditor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Editor/Settings/ProfileValueReference.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/UriHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/View/UIProgressBar.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggLoader.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Hybrid/HybridUpdater.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Appegg.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Web/WebViewObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Web/WKWebView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggLoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Editor/UnityWebViewPostprocessBuild.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Legacy/Hybrid/HybridUpdater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Editor/AppeggEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Runtime/AddressablesImpl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@1.9.2/Editor/Settings/ProfileValueReference.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/View/UIProgressBar.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Appegg.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Util/UriHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Appegg/Scripts/Core/HotfixBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -49,11 +52,13 @@
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/View/UINetworkImage.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/HotfixBehaviour.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggView.cs" />
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Deprecated/RemoteAssetsLoader.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggConfig.cs" />
-        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Appegg.cs" />
         <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/AppeggLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Legacy/RemoteAssetsLoader.cs" />
+        <option value="$PROJECT_DIR$/../../Workshop/Test/HotfixB/Assets/RemoteAssetsLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Util/WebUtil.cs" />
+        <option value="$PROJECT_DIR$/Assets/Appegg/Scripts/Core/Appegg.cs" />
       </list>
     </option>
   </component>

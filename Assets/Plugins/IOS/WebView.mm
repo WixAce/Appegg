@@ -127,16 +127,6 @@ static NSMutableArray *_instances = [[NSMutableArray alloc] init];
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
         WKUserContentController *controller = [[WKUserContentController alloc] init];
         [controller addScriptMessageHandler:self name:@"unityControl"];
-
-        //注入gbxBrige对象
-        [controller addScriptMessageHandler:self name:@"gbxBridge"];
-        NSString *js = [NSString
-        stringWithFormat:@"window.gbxBridge={};gbxBridge.deviceType='ios';gbxBridge.version=%d;gbxBridge.startEvent=function(args){window.webkit.messageHandlers.gbxBridge.postMessage(args);}",apiVersion];
-        WKUserScript *jsUserScript=[[WKUserScript alloc] initWithSource:js
-            injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:NO];
-        [controller addUserScript:jsUserScript];
-
-
         configuration.userContentController = controller;
         configuration.allowsInlineMediaPlayback = true;
         if (@available(iOS 10.0, *)) {
@@ -265,12 +255,6 @@ static NSMutableArray *_instances = [[NSMutableArray alloc] init];
 - (void)userContentController:(WKUserContentController *)userContentController
       didReceiveScriptMessage:(WKScriptMessage *)message {
 
-    //监听消息
-    if([message.name isEqualToString:@"gbxBridge"]){
-        NSString *jsonStr = message.body;
-        [self startEvent:jsonStr];
-    }
-
     // Log out the message received
     NSLog(@"Received event %@", message.body);
     UnitySendMessage([gameObjectName UTF8String], "CallFromJS",
@@ -332,7 +316,12 @@ static NSMutableArray *_instances = [[NSMutableArray alloc] init];
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }
-    if ([url rangeOfString:@"//itunes.apple.com/"].location != NSNotFound) {
+     if ([navigationAction.request.URL.absoluteString hasPrefix:@"weixin:"] || [navigationAction.request.URL.absoluteString hasPrefix:@"alipay:"]) { // 对应的scheme
+        [[UIApplication sharedApplication] openURL:navigationAction.request.URL];
+            decisionHandler(WKNavigationActionPolicyAllow);
+             return;
+    }
+    else if ([url rangeOfString:@"//itunes.apple.com/"].location != NSNotFound) {
         [[UIApplication sharedApplication] openURL:nsurl];
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
@@ -656,41 +645,6 @@ static NSMutableArray *_instances = [[NSMutableArray alloc] init];
     strcpy(r, s);
     return r;
 }
-
-//监听消息
--(void)startEvent:(NSString*)data{
-    dispatch_async(dispatch_get_main_queue(),^{
-        [self doJSRequest:data];
-    });
-}
-
-
--(void)log:(NSString*)msg{
-    NSLog(@"webview:%@",msg);
-}
-
--(void)doJSRequest:(NSString*)data{
-    //if(self.bDebug)
-    [self log:data];
-
-   /* NSDictionary *_data = [data objectFromJSONString];
-    NSString *eventName = (NSString*)[_data objectForKey:@"name"];
-    int callbackId = [[_data objectForKey:@"callbackId"] intValue];
-    NSArray *args = [_data objectForKey:@"args"];
-    if([eventName isEqualToString:@"gameReady"]){
-        [self gameReady];
-    }else if([eventName isEqualToString:@"getDeviceType"]){
-        [self getDeviceType:callbackID];
-    }else if([eventName isEqualToString:@"getVersion"]){
-        [self getVersion:callbackID];
-    }else if([eventName isEqualToString:@"getDownloadGameConfig"]){
-        [self getDownloadGameConfig:callbackID];
-    }else if([eventName isEqualToString:@"getSupportedLoginType"]){
-        [self getSupportedLoginType:callbackID];
-    }else if([eventName isEqualToString:@"getAppConfig"]){
-        [self getAppConfig:callbackID];
-    }*/
-}
 @end
 
 extern "C" {
@@ -883,6 +837,5 @@ const char *_CWebViewPlugin_GetCustomHeaderValue(void *instance, const char *hea
     CWebViewPlugin *webViewPlugin = (__bridge CWebViewPlugin *)instance;
     return [webViewPlugin getCustomRequestHeaderValue:headerKey];
 }
-
 
 #endif // !(__IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_9_0)

@@ -1,1 +1,0 @@
-{"type":"View","props":{},"compId":2,"child":[{"type":"SkeletonPlayer","props":{"y":0,"x":0,"var":"sk","url":"res-games/jcby/fish/golddragon.sk","scaleY":0.3,"scaleX":0.3,"runtime":"laya.ani.bone.Skeleton"},"compId":3}],"loadList":["res-games/jcby/fish/golddragon.sk"],"loadList3D":[]}

@@ -12,17 +12,6 @@
             <e p="UnityWebViewPostprocessBuild.cs" t="Include" />
           </e>
           <e p="Plugins" t="Include">
-            <e p="CSV2Table" t="Include">
-              <e p="Editor" t="Include">
-                <e p="CSV2Table.cs" t="Include" />
-                <e p="CSVView.cs" t="Include" />
-              </e>
-              <e p="Scripts" t="Include">
-                <e p="CsvParser.cs" t="Include" />
-                <e p="CsvParser2.cs" t="Include" />
-                <e p="TableCodeGen.cs" t="Include" />
-              </e>
-            </e>
             <e p="ICSharpCode.SharpZipLib" t="Include">
               <e p="BZip2" t="Include">
                 <e p="BZip2.cs" t="Include" />
@@ -125,16 +114,6 @@
               <e p="AppeggView.cs" t="Include" />
               <e p="HotfixBehaviour.cs" t="Include" />
             </e>
-            <e p="Hybrid" t="Include">
-              <e p="ConfigDto.cs" t="Include" />
-              <e p="HybridUpdater.cs" t="Include" />
-            </e>
-            <e p="Legacy" t="Include">
-              <e p="AALoadPrefab.cs" t="Include" />
-              <e p="AppBehaviour.cs" t="Include" />
-              <e p="AssetLoader.cs" t="Include" />
-              <e p="RemoteAssetsLoader.cs" t="Include" />
-            </e>
             <e p="Util" t="Include">
               <e p="UriHelper.cs" t="Include" />
               <e p="WebUtil.cs" t="Include" />
@@ -152,6 +131,27 @@
           </e>
         </e>
         <e p="csc.rsp" t="Include" />
+        <e p="Legacy" t="Include">
+          <e p="AALoadPrefab.cs" t="Include" />
+          <e p="AppBehaviour.cs" t="Include" />
+          <e p="AssetLoader.cs" t="Include" />
+          <e p="CSV2Table" t="Include">
+            <e p="Editor" t="Include">
+              <e p="CSV2Table.cs" t="Include" />
+              <e p="CSVView.cs" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="CsvParser.cs" t="Include" />
+              <e p="CsvParser2.cs" t="Include" />
+              <e p="TableCodeGen.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Hybrid" t="Include">
+            <e p="ConfigDto.cs" t="Include" />
+            <e p="HybridUpdater.cs" t="Include" />
+          </e>
+          <e p="RemoteAssetsLoader.cs" t="Include" />
+        </e>
         <e p="StreamingAssets" t="Include">
           <e p="files.txt" t="Include" />
           <e p="jpby_2d" t="Include">
@@ -166,6 +166,6 @@
       <e p="Temp/bin" t="ExcludeRecursive" />
     </e>
     <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_Appegg.-1787807098.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_Appegg.2140075921.00" t="ExcludeRecursive" />
   </component>
 </project>
